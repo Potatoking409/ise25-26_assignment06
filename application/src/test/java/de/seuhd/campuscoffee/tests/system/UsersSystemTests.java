@@ -52,7 +52,7 @@ public class UsersSystemTests extends AbstractSysTest {
         List<User> createdUserList = TestFixtures.createUsers(userService);
         User createdUser = createdUserList.getFirst();
         String userName = createdUser.loginName();
-        User filteredUser = userDtoMapper.toDomain(userRequests.retrieveByFilter("name", userName));
+        User filteredUser = userDtoMapper.toDomain(userRequests.retrieveByFilter("loginName", userName));
 
         assertEqualsIgnoringTimestamps(filteredUser, createdUser);
     }
@@ -64,8 +64,8 @@ public class UsersSystemTests extends AbstractSysTest {
 
         // update fields using toBuilder() pattern (records are immutable)
         userToUpdate = userToUpdate.toBuilder()
-                .loginName(userToUpdate.loginName() + " (Updated)")
-                .emailAddress("Updated email address")
+                .loginName(userToUpdate.loginName() + "Updated")
+                .emailAddress("updated@example.com")
                 .build();
 
         User updatedPos = userDtoMapper.toDomain(userRequests.update(List.of(userDtoMapper.fromDomain(userToUpdate))).getFirst());

@@ -60,7 +60,7 @@ public class UserController {
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = UserDto.class)
                             ),
-                            description = "The POS with the provided ID as a JSON object."
+                            description = "The User with the provided ID as a JSON object."
                     ),
                     @ApiResponse(
                             responseCode = "404",
@@ -68,7 +68,7 @@ public class UserController {
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = ErrorResponse.class)
                             ),
-                            description = "No POS with the provided ID could be found."
+                            description = "No User with the provided ID could be found."
                     )
             }
     )
